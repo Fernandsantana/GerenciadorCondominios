@@ -7,7 +7,7 @@ using System.Text;
 
 namespace GerenciadorCondominios.DAL.Mapeamentos
 {
-    public class ServicoPredioMap : IEntityTypeConfiguration<ServicoPredio>
+    public class ServicoPrediosMap : IEntityTypeConfiguration<ServicoPredio>
     {
         public void Configure(EntityTypeBuilder<ServicoPredio> builder)
         {
