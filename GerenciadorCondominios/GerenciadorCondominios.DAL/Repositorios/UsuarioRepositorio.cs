@@ -29,7 +29,6 @@ namespace GerenciadorCondominios.DAL.Repositorios
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -42,7 +41,6 @@ namespace GerenciadorCondominios.DAL.Repositorios
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -55,7 +53,6 @@ namespace GerenciadorCondominios.DAL.Repositorios
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -68,7 +65,6 @@ namespace GerenciadorCondominios.DAL.Repositorios
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -81,7 +77,6 @@ namespace GerenciadorCondominios.DAL.Repositorios
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -94,7 +89,6 @@ namespace GerenciadorCondominios.DAL.Repositorios
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -107,10 +101,94 @@ namespace GerenciadorCondominios.DAL.Repositorios
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+        }
+
+        public async Task<bool> VerificarSeUsuarioEstaEmFuncao(Usuario usuario, string funcao)
+        {
+            try
+            {
+                return await _gerenciadorUsuarios.IsInRoleAsync(usuario, funcao);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<IList<string>> PegarFuncoesUsuario(Usuario usuario)
+        {
+            try
+            {
+                return await _gerenciadorUsuarios.GetRolesAsync(usuario);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<IdentityResult> RemoverFuncoesUsuario(Usuario usuario, IEnumerable<string> funcoes)
+        {
+            try
+            {
+                return await _gerenciadorUsuarios.RemoveFromRolesAsync(usuario, funcoes);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<IdentityResult> IncluirUsuarioEmFuncoes(Usuario usuario, IEnumerable<string> funcoes)
+        {
+            try
+            {
+                return await _gerenciadorUsuarios.AddToRolesAsync(usuario, funcoes);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<Usuario> PegarUsuarioPeloNome(ClaimsPrincipal usuario)
+        {
+            try
+            {
+                return await _gerenciadorUsuarios.FindByNameAsync(usuario.Identity.Name);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<Usuario> PegarUsuarioPeloId(string usuarioId)
+        {
+            try
+            {
+                return await _gerenciadorUsuarios.FindByIdAsync(usuarioId);
+            }
+            catch (Exception ex)
+            {
 
                 throw ex;
             }
         }
 
+        public string CodificarSenha(Usuario usuario, string senha)
+        {
+            try
+            {
+                return _gerenciadorUsuarios.PasswordHasher.HashPassword(usuario, senha);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
