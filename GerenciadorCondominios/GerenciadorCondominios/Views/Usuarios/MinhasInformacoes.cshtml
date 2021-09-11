@@ -36,3 +36,33 @@
         </div>
     </div>
 </div>
+
+<div>
+    @await Component.InvokeAsync("Veiculos", Model.Id)
+</div>
+
+<div>
+    <partial name="_ModalExcluir" />
+</div>
+
+@section Scripts{
+    <script>
+        function ConfirmarExclusao(id, nome) {
+            $('.modal').modal({
+                dismissble: true
+            });
+            $('#modal').modal('open');
+            $(".nome").text(nome);
+            $(".btnExcluir").on('click', function () {
+                $.ajax({
+                    method: "POST",
+                    url: "/Veiculos/Delete",
+                    data: { id: id },
+                    success: function (data) {
+                        location.reload(true);
+                    }
+                })
+            })
+        }
+    </script>
+}

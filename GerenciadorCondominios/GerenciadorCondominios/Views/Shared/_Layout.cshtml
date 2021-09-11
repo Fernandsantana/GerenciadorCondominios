@@ -21,8 +21,9 @@
         <nav class="grey darken-3">
             <div class="nav-wrapper navbar-fixed">
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li class="nav-item"><a class="nav-link" asp-controller="Eventos" asp-action="Index">Eventos</a></li>
                     <li class="nav-item"><a class="nav-link" asp-controller="Usuarios" asp-action="MinhasInformacoes">Minhas Informações</a></li>
-                    <li class="nav-item"><partial name="_Logout"/></li>
+                    <li class="nav-item"><partial name="_Logout" /></li>
                 </ul>
             </div>
         </nav>
@@ -43,12 +44,14 @@
     <environment include="Development">
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+        <script src="~/js/InicializarTooltips.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
         @RenderSection("Scripts", required: false)
     </environment>
     <environment exclude="Development">
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="~/js/InicializarTooltips.js"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
         @RenderSection("Scripts", required: false)
     </environment>
